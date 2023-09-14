@@ -12,8 +12,10 @@ import phoneSec from './PhoneBookSection.module.css'
 export class PhoneBookSection extends Component {
 
     state = {
+
         name: "",
         number: "",
+        
     }
 
     readContacts = (userName) => this.setState({
