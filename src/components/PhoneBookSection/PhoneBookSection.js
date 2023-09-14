@@ -7,7 +7,7 @@ import { DataOut } from '../DataOut/DataOut';
 import { FindContacts } from '../FindContacts/FindContacts';
 
 // add css modules
-
+import phoneSec from './PhoneBookSection.module.css'
 
 export class PhoneBookSection extends Component {
 
@@ -23,27 +23,22 @@ export class PhoneBookSection extends Component {
     );
 
     render() {
-        
+       
         return(
 
             <>
 
-                <div>
-                    <form>
+                <div className={phoneSec.section}>
+                    <form className={phoneSec.form}>
                         <DataIn read={this.readContacts}/>
                         <Control users={this.props.users} inputData={this.state}/>
                     </form>
-                </div>
-
-                <div>
-                     <FindContacts/>
-                </div>
-
-                <div>
+                
                     <p>Contacts</p>
-                    <DataOut print={this.props.data}/>
+                    <FindContacts findUser={this.props.users} findFilter={this.props.userFilter} findData={this.props.data}/>
+                    <DataOut print={this.props.data} del={this.props.userDel}/>
+               
                 </div>
-            
             </>
 
         )

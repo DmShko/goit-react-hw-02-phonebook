@@ -1,5 +1,8 @@
 import { Component } from "react";
 
+// add css modules
+import c from '../Control/Control.module.css';
+
 export class Control extends Component {
 
 
@@ -11,7 +14,7 @@ export class Control extends Component {
     render() {
         return(
             <>
-                <button type="submit" onClick={this.addUser}>Add contact</button>
+                <button className={c.button} type="submit" onClick={this.addUser}>Add contact</button>
             </>
         )
     }

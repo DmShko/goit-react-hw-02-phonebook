@@ -1,0 +1,18 @@
+.lable {
+   
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.text {
+    margin: 0;
+}
+
+.input {
+
+    width: 300px;
+    height: 35px;
+    font-size: 20px;
+
+    border-radius: 8px;
+}
