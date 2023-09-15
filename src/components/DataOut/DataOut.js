@@ -13,19 +13,20 @@ export class DataOut extends Component {
 
         return (
             
-            <ul>
+            <ul className={o.list}>
 
-                {this.props.print.contacts.map(resault => { 
-                     if(resault.name.toLowerCase().includes(this.props.print.filter)) {
-                        
-                        return (
-                        <li className={o.item} key={resault.id}>
-
-                            <p>{resault.name}</p>
-                            <button className={o.button} name={resault.id} type="button" onClick={this.deleteUser}>Delete</button>
+                {
+                    this.props.print.contacts.map(resault => { 
+                        if(resault.name.toLowerCase().includes(this.props.print.filter)) {
                             
-                        </li>)
-                    }}
+                            return (<li className={o.item} key={resault.id}>
+
+                                <p>{resault.name}</p>
+                                <button className={o.button} name={resault.id} type="button" onClick={this.deleteUser}>Delete</button>
+                                
+                            </li>)
+                        }
+                    }
                 )}
                    
             </ul>

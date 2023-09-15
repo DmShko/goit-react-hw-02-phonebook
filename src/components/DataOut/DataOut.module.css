@@ -1,6 +1,5 @@
 .item {
-    width: 400px;
-
+  
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -9,11 +8,22 @@
     gap: 10px;
 }
 
+.list {
+    width: 100%;
+    padding: 0;
+}
+
 .button {
-    width: 25%;
+  
     height: 30px;
 
+    border: none;
     border-radius: 8px;
+
+    font-size: 20px;
+
+    background-color: white;
+    box-shadow: 0px 0px 22px 0 rgb(212, 212, 212), 0px 0px 12px 0.5px rgb(104, 104, 104), 0px 0px 5px 0 rgb(65, 65, 65);
 }
 
 .button:hover {

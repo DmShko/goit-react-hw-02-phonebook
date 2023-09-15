@@ -15,14 +15,15 @@ export class PhoneBookSection extends Component {
 
         name: "",
         number: "",
+        NameValid: true,
+        NumberValid:true,
         
     }
 
-    readContacts = (userName) => this.setState({
-        name: userName.nameValue,
-        number: userName.numberValue,
-    } 
-    );
+    getValidInputValue = (validValue) => this.setState(({
+       NameValid: validValue.inputNameValid,
+       NumberValid: validValue.inputNumberValid,
+    }));
 
     render() {
        
@@ -32,7 +33,7 @@ export class PhoneBookSection extends Component {
 
                 <div className={phoneSec.section}>
                     <form className={phoneSec.form}>
-                        <DataIn read={this.readContacts}/>
+                        <DataIn read={this.state} getValid={this.getValidInputValue}/>
                         <Control users={this.props.users} inputData={this.state}/>
                     </form>
                 

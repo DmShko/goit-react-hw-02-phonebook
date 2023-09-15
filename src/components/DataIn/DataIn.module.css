@@ -16,3 +16,11 @@
 
     border-radius: 8px;
 }
+
+input:required:invalid {
+    border: lightcoral solid 3px;
+  }
+
+input:required:valid {
+    border: lightblue solid 3px;
+}
