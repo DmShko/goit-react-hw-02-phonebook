@@ -32,8 +32,6 @@ export class PhoneBookSection extends Component {
        
         return(
 
-            <>
-
                 <div className={phoneSec.section}>
                     <form className={phoneSec.form}>
                         <DataIn read={this.state} getValid={this.getValidInputValue} change={this.changeState}/>
@@ -42,10 +40,16 @@ export class PhoneBookSection extends Component {
                 
                     <p>Contacts</p>
                     <FindContacts findUser={this.props.users} findFilter={this.props.userFilter} findData={this.props.data}/>
-                    <DataOut print={this.props.data} del={this.props.userDel}/>
-               
+
+                    <ul className={phoneSec.list}>
+                       { 
+                        this.props.data.contacts.map(result => { 
+                            
+                            return <DataOut key={result.id} userData={this.props.data} print={result} del={this.props.userDel}/>
+                        })
+                       }        
+                    </ul>
                 </div>
-            </>
 
         )
     }

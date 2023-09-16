@@ -14,25 +14,27 @@ export class DataIn extends Component {
 
     checkValid = (data) => {
        
-            if(data.validity.patternMismatch === false) {
+        if(data.validity.patternMismatch === false) {
                
-                data.name === "userName" ?  this.setState(value => ({inputNameValid : value.inputNameValid && data.validity.patternMismatch})):
-                this.setState(value => ({inputNumberValid : value.inputNumberValid && data.validity.patternMismatch}));
+            data.name === "userName" ?  this.setState(value => ({inputNameValid : value.inputNameValid && data.validity.patternMismatch})):
+            this.setState(value => ({inputNumberValid : value.inputNumberValid && data.validity.patternMismatch}));
                 
-            } else {
+        } else {
                 
-                data.name === "userName" ?  this.setState(value => ({inputNameValid : value.inputNameValid || data.validity.patternMismatch})):
-                this.setState(value => ({inputNumberValid : value.inputNumberValid || data.validity.patternMismatch}));
+            data.name === "userName" ?  this.setState(value => ({inputNameValid : value.inputNameValid || data.validity.patternMismatch})):
+            this.setState(value => ({inputNumberValid : value.inputNumberValid || data.validity.patternMismatch}));
 
-            }
+        }
             
     }
-
+    
     change = (data) => {
         
         if(data.validity.patternMismatch === false) {
+            
             data.name === "userName" ? this.setState({name: data.value})
             : this.setState({number: data.value});
+
         }
 
     }
@@ -63,7 +65,7 @@ export class DataIn extends Component {
 
                 <label className={di.lable}> 
                     <p className={di.text}>Name</p>
-                    <input className={di.input}  name="userName" type="text" onChange={this.toChange} 
+                    <input className={di.input} name="userName" type="text" onChange={this.toChange} 
                     pattern="\w{0}[a-zA-Zа-яА-Я]+\s\w{0}[a-zA-Zа-яА-Я]+"
                     title="Please, use only letters!" required></input>
                 </label>

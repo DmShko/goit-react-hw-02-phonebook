@@ -13,24 +13,17 @@ export class DataOut extends Component {
 
         return (
             
-            <ul className={o.list}>
+           
+            this.props.print.name.toLowerCase().includes(this.props.userData.filter) ?           
+               ( <li className={o.item} >
 
-                {
-                    this.props.print.contacts.map(resault => { 
-                        if(resault.name.toLowerCase().includes(this.props.print.filter)) {
-                            
-                            return (<li className={o.item} key={resault.id}>
-
-                                <p>{resault.name}</p>
-                                <button className={o.button} name={resault.id} type="button" onClick={this.deleteUser}>Delete</button>
-                                
-                            </li>)
-                        }
-                    }
-                )}
-                   
-            </ul>
-        
+                    <p>{this.props.print.name}</p>
+                    <button className={o.button} name={this.props.print.id} type="button" onClick={this.deleteUser}>Delete</button>
+                    
+                </li>) : 'none'
+            
+           
+            
         )
     }
 }
