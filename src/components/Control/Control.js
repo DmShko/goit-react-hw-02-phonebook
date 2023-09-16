@@ -6,7 +6,7 @@ import c from '../Control/Control.module.css';
 export class Control extends Component {
 
     addUser = (evt) => {
-        if(this.props.inputData.NameValid === false && this.props.inputData.NumberValid === false) {
+        if(this.props.inputData.nameValid === false && this.props.inputData.numberValid === false) {
             evt.preventDefault();
             this.props.users(this.props.inputData)
         } else{
@@ -15,7 +15,7 @@ export class Control extends Component {
     };
 
     render() {
-        console.log(`${this.props.inputData.NameValid} ${this.props.inputData.NumberValid}`)
+        console.log(`${this.props.inputData.nameValid} ${this.props.inputData.numberValid}`)
         return(
             <>
                 <button className={c.button} type="submit" onClick={this.addUser}>Add contact</button>

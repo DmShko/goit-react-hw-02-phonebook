@@ -6,39 +6,58 @@ import di from './DataIn.module.css';
 export class DataIn extends Component {
 
     state = {
+        name: "",
+        number: "",
         inputNameValid: true,
         inputNumberValid: true,
     }
 
     checkValid = (data) => {
-        if(data.name === "userName") {
-            data.validity.patternMismatch === false ? this.state.inputNameValid = false:
-                this.state.inputNameValid = true;
+       
+            if(data.validity.patternMismatch === false) {
+               
+                data.name === "userName" ?  this.setState(value => ({inputNameValid : value.inputNameValid && data.validity.patternMismatch})):
+                this.setState(value => ({inputNumberValid : value.inputNumberValid && data.validity.patternMismatch}));
+                
+            } else {
+                
+                data.name === "userName" ?  this.setState(value => ({inputNameValid : value.inputNameValid || data.validity.patternMismatch})):
+                this.setState(value => ({inputNumberValid : value.inputNumberValid || data.validity.patternMismatch}));
 
-            this.props.getValid(this.state);
-        } else {
-            data.validity.patternMismatch === false ? this.state.inputNumberValid = false:
-                this.state.inputNumberValid = true;
+            }
+            
+    }
 
-            this.props.getValid(this.state);
+    change = (data) => {
+        
+        if(data.validity.patternMismatch === false) {
+            data.name === "userName" ? this.setState({name: data.value})
+            : this.setState({number: data.value});
         }
+
     }
 
     toChange = (evt) => {
-        this.checkValid(evt.target);
-        // evt.target.name === "userName" ? this.setState({nameValue: evt.target.value.trim(),})
-        // : this.setState({numberValue: evt.target.value.trim(),});
-        if(this.state.inputNameValid === false || this.state.inputNumberValid === false) {
-            evt.target.name === "userName" ? this.props.read.name = evt.target.value
-            : this.props.read.number = evt.target.value;
+
+        if(this.state.inputNameValid === false && this.state.inputNumberValid === false){
+         
+            this.props.getValid(this.state);
+            this.props.change(this.state);
         }
         
+        this.checkValid(evt.target);
+        this.change(evt.target);
+      
+        // evt.target.name === "userName" ? this.setState({nameValue: evt.target.value.trim(),})
+        // : this.setState({numberValue: evt.target.value.trim(),});
+       
+       
         // this.props.read(this.state);
         
     }
 
     render() {
-        
+        console.log(this.state)
         return(
             <>
 

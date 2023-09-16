@@ -12,18 +12,21 @@ import phoneSec from './PhoneBookSection.module.css'
 export class PhoneBookSection extends Component {
 
     state = {
-
         name: "",
         number: "",
-        NameValid: true,
-        NumberValid:true,
-        
+        nameValid: true,
+        numberValid:true,
     }
-
-    getValidInputValue = (validValue) => this.setState(({
-       NameValid: validValue.inputNameValid,
-       NumberValid: validValue.inputNumberValid,
+   
+    getValidInputValue = (validValue) => this.setState(value => ({
+       nameValid: validValue.inputNameValid,
+       numberValid: validValue.inputNumberValid,
     }));
+
+    changeState = (userData) => this.setState(({
+        name: userData.name,
+        number: userData.number,
+     }));
 
     render() {
        
@@ -33,7 +36,7 @@ export class PhoneBookSection extends Component {
 
                 <div className={phoneSec.section}>
                     <form className={phoneSec.form}>
-                        <DataIn read={this.state} getValid={this.getValidInputValue}/>
+                        <DataIn read={this.state} getValid={this.getValidInputValue} change={this.changeState}/>
                         <Control users={this.props.users} inputData={this.state}/>
                     </form>
                 
