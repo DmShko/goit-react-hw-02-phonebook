@@ -20,7 +20,7 @@ export class DataOut extends Component {
                     <p>{this.props.print.name}</p>
                     <button className={o.button} name={this.props.print.id} type="button" onClick={this.deleteUser}>Delete</button>
                     
-                </li>) : 'none'
+                </li>) : ""
             
            
             

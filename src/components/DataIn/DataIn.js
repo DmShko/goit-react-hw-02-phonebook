@@ -32,8 +32,8 @@ export class DataIn extends Component {
         
         if(data.validity.patternMismatch === false) {
             
-            data.name === "userName" ? this.setState({name: data.value})
-            : this.setState({number: data.value});
+            data.name === "userName" ? this.setState({name: data.value.trim()})
+            : this.setState({number: data.value.trim()});
 
         }
 
@@ -41,20 +41,16 @@ export class DataIn extends Component {
 
     toChange = (evt) => {
 
-        if(this.state.inputNameValid === false && this.state.inputNumberValid === false){
+        this.props.getValid(this.state);
+        
+        // if(this.state.inputNameValid === false && this.state.inputNumberValid === false){
          
-            this.props.getValid(this.state);
-            this.props.change(this.state);
-        }
+           
+        this.props.change(this.state);
+        // }
         
         this.checkValid(evt.target);
         this.change(evt.target);
-      
-        // evt.target.name === "userName" ? this.setState({nameValue: evt.target.value.trim(),})
-        // : this.setState({numberValue: evt.target.value.trim(),});
-       
-       
-        // this.props.read(this.state);
         
     }
 
