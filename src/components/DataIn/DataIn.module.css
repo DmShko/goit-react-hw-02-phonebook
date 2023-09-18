@@ -14,6 +14,7 @@
     height: 35px;
     font-size: 20px;
 
+    margin-bottom: 10px;
     border-radius: 8px;
 }
 
@@ -32,6 +33,7 @@ input:required:valid {
     font-size: 20px;
     border: none;
     border-radius: 8px;
+    margin-bottom: 10px;
 
     background-color: white;
     box-shadow: 0px 0px 22px 0 rgb(212, 212, 212), 0px 0px 12px 0.5px rgb(104, 104, 104), 0px 0px 5px 0 rgb(65, 65, 65);
@@ -39,4 +41,17 @@ input:required:valid {
 
 .button:hover {
     background-color: rgba(166, 96, 175, 0.404);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding: 10px;
+    width: 50%;
+
+    border: 2px solid black;
+    border-radius: 8px;
 }

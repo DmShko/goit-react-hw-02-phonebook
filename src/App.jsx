@@ -1,47 +1,52 @@
-import { Component } from "react";
+import { Component } from 'react';
 import { nanoid } from 'nanoid';
-import Notiflix from "notiflix";
+import Notiflix from 'notiflix';
 
 import { PhoneBookSection } from './components/PhoneBookSection/PhoneBookSection';
 
 export class App extends Component {
-
   state = {
     contacts: [],
     filter: '',
-  }
+  };
 
-  changeContacts = (newstate) => {
-
-   
-    if(this.state.contacts.find(element => element.name === [newstate.name, newstate.number].join(" ")) === undefined) {
-      
-      this.setState({contacts: [...this.state.contacts, {name:[newstate.name, newstate.number].join(" "), id: nanoid()}],
-      
-    });} else {
+  changeContacts = newstate => {
+    if (
+      this.state.contacts.find(
+        element => element.name === [newstate.name, newstate.number].join(' ')
+      ) === undefined
+    ) {
+      this.setState({
+        contacts: [
+          ...this.state.contacts,
+          { name: [newstate.name, newstate.number].join(' '), id: nanoid() },
+        ],
+      });
+    } else {
       Notiflix.Notify.warning(`"${newstate.name}" is already in contacts!`);
     }
-  }
-  
-  changeFilter = (newFilter) => this.setState({filter: newFilter.filter});
+  };
 
-  deleteContact = (deleteById) => this.setState( 
+  changeFilter = newFilter => this.setState({ filter: newFilter.filter });
 
-    {contacts: this.state.contacts.filter(element => element.id !== deleteById)}
-    
-  );
-  
+  deleteContact = deleteById =>
+    this.setState({
+      contacts: this.state.contacts.filter(
+        element => element.id !== deleteById
+      ),
+    });
+
   render() {
-   
-    return(
-
+    return (
       <>
-
         <p>Phonebook</p>
-        <PhoneBookSection users={this.changeContacts} userDel={this.deleteContact} userFilter={this.changeFilter} data={this.state}/>
-        
+        <PhoneBookSection
+          users={this.changeContacts}
+          userDel={this.deleteContact}
+          userFilter={this.changeFilter}
+          data={this.state}
+        />
       </>
-      
-    )
+    );
   }
 }
