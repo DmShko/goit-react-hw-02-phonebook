@@ -16,7 +16,7 @@ export class App extends Component {
         element => element.name === [newstate.name, newstate.number].join(' ')
       ) !== undefined
     ) {
-      Notiflix.Notify.warning(`"${newstate.name}" is already in contacts!`, {position: 'center-top'});
+      Notiflix.Notify.warning(`"${newstate.name}" is already in contacts!`, {position: 'center-top', fontSize: '24px',});
       return;
     } 
 
