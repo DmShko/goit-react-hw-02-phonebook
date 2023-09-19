@@ -14,17 +14,19 @@ export class App extends Component {
     if (
       this.state.contacts.find(
         element => element.name === [newstate.name, newstate.number].join(' ')
-      ) === undefined
+      ) !== undefined
     ) {
-      this.setState({
-        contacts: [
-          ...this.state.contacts,
-          { name: [newstate.name, newstate.number].join(' '), id: nanoid() },
-        ],
-      });
-    } else {
-      Notiflix.Notify.warning(`"${newstate.name}" is already in contacts!`);
-    }
+      Notiflix.Notify.warning(`"${newstate.name}" is already in contacts!`, {position: 'center-top'});
+      return;
+    } 
+
+    this.setState({
+      contacts: [
+        ...this.state.contacts,
+        { name: [newstate.name, newstate.number].join(' '), id: nanoid() },
+      ],
+    });
+
   };
 
   changeFilter = newFilter => this.setState({ filter: newFilter.filter });

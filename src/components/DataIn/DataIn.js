@@ -28,41 +28,28 @@ export class DataIn extends Component {
 
   checkValid = data => {
     // VARIAN 1 CHAGE 'VALID' PROPERTIES OF state ON BASE PREVIOUS VALUE
-    // if(data.validity.patternMismatch === false) {
-
-    //     data.name === "name" ?  this.setState(state => ({inputNameValid : state.inputNameValid && data.validity.patternMismatch})):
-    //     this.setState(state => ({inputNumberValid : state.inputNumberValid && data.validity.patternMismatch}));
-
-    // } else {
-
-    //     data.name === "name" ?  this.setState(state => ({inputNameValid : state.inputNameValid || data.validity.patternMismatch})):
-    //     this.setState(state => ({inputNumberValid : state.inputNumberValid || data.validity.patternMismatch}));
-
-    // }
-
-    // VARIAN 2 CHAGE 'VALID' PROPERTIES OF state without USE PREVIOUS VALUE
-    // only if target value is valid
     if (data.validity.patternMismatch === false) {
       data.name === 'name'
-        ? this.setState({
+        ? this.setState(state => ({
             inputNameValid:
-              this.state.inputNameValid && data.validity.patternMismatch,
-          })
-        : this.setState({
+              state.inputNameValid && data.validity.patternMismatch,
+          }))
+        : this.setState(state => ({
             inputNumberValid:
-              this.state.inputNumberValid && data.validity.patternMismatch,
-          });
+              state.inputNumberValid && data.validity.patternMismatch,
+          }));
     } else {
       data.name === 'name'
-        ? this.setState({
+        ? this.setState(state => ({
             inputNameValid:
-              this.state.inputNameValid || data.validity.patternMismatch,
-          })
-        : this.setState({
+              state.inputNameValid || data.validity.patternMismatch,
+          }))
+        : this.setState(state => ({
             inputNumberValid:
-              this.state.inputNumberValid || data.validity.patternMismatch,
-          });
+              state.inputNumberValid || data.validity.patternMismatch,
+          }));
     }
+
   };
 
   stateChange = data => {
@@ -92,7 +79,8 @@ export class DataIn extends Component {
               type="text"
               onChange={this.inputChange}
               pattern="\w{0}[a-zA-Zа-яА-Я]+\s\w{0}[a-zA-Zа-яА-Я]+"
-              title="Please, use only letters!"
+              title="Please, use only letters and space in the following form: * *!"
+              placeholder="Only letters # #"
               required
             ></input>
           </label>
@@ -106,7 +94,9 @@ export class DataIn extends Component {
               type="tel"
               onChange={this.inputChange}
               pattern="\d{3}[0-9]-\d{1}[0-9]-\d{1}[0-9]"
-              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +
+              in the following form: ####-##-##!"
+              placeholder="Only digits ####-##-##"
               required
             ></input>
           </label>
