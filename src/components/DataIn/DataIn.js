@@ -11,6 +11,10 @@ export class DataIn extends Component {
     inputNumberValid: true,
   };
 
+  clearInputs = () => {
+    this.setState({name: '', number: '',});
+  }
+
   // transfer THIS 'state' to method in App 'state', so that change his properties (App 'state')
   addUser = evt => {
     // transfer data only, if valid fields is valid
@@ -24,6 +28,9 @@ export class DataIn extends Component {
     } else {
       evt.preventDefault();
     }
+
+    //clear input fields
+    this.clearInputs();
   };
 
   checkValid = data => {
@@ -57,13 +64,16 @@ export class DataIn extends Component {
 
     // change 'state' without use previous value
     this.setState({ [name]: value });
+
   };
 
   inputChange = evt => {
+    
     // change valid properties of 'state', so that output users only, if bouth input fields contain valid value
     this.checkValid(evt.target);
     // change 'name' and 'number' fields in 'data'
     this.stateChange(evt.target);
+       
   };
 
   render() {
